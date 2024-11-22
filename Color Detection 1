@@ -1,7 +1,6 @@
-//This color detection code comes from: https://projecthub.arduino.cc/SurtrTech/color-detection-using-tcs3200230-a1e463
-
-/* This code works with GY-31 TCS3200 TCS230 color sensor module
- *  It select a photodiode set and read its value (Red Set/Blue set/Green set) and reproduce  the color on the RGB LED
+/*This color detection code comes from: https://projecthub.arduino.cc/SurtrTech/color-detection-using-tcs3200230-a1e463
+ * This code works with GY-31 TCS3200 TCS230 color sensor module
+ *  It selects a photodiode set and reads its value (Red Set/Blue set/Green set) and reproduces  the color on the RGB LED
  * Refer to www.surtrtech.com for more details
  */
   
@@ -31,7 +30,7 @@ void setup()
 
    Serial.begin(9600);   //intialize the serial monitor baud rate
    
-   digitalWrite(s0,HIGH);  //Putting S0/S1 on HIGH/HIGH levels means the output frequency scalling is at 100%  (recommended)
+   digitalWrite(s0,HIGH);  //Putting S0/S1 on HIGH/HIGH levels means the output frequency scaling is at 100%  (recommended)
    digitalWrite(s1,HIGH); //LOW/LOW is off HIGH/LOW is 20% and  LOW/HIGH is  2%
    
 }
