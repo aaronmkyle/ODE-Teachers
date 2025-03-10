@@ -1,0 +1,45 @@
+#include <Servo.h>
+
+Servo myServo;
+int trigPin = 7; // Set your trigger pin
+int echoPin = 8; // Set your echo pin
+long duration;
+int distance;
+
+void setup() {
+  myServo.attach(3); // Attach the servo to pin 11
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Send a pulse from the trigger pin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Measure the pulse duration from the echo pin
+  duration = pulseIn(echoPin, HIGH);
+
+  // Calculate the distance (cm)
+  distance = duration * 0.034 / 2;
+
+  // If the distance is less than 10cm, turn the servo
+  if (distance < 10) {
+    myServo.write(180); // Move the servo to 180 degrees
+    //delay(1000);
+    //myServo.write(0);
+  } else {
+    myServo.write(0); // Move the servo back to 0 degrees
+  }
+
+  // Print the distance to the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  delay(500); // Delay between measurements
+}
